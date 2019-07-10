@@ -1,0 +1,15 @@
+from MonoKernel import lassoCD, lassoLARS, lassoLARSIC
+
+from MonoKernel import elastic_net, elastic_net_ratio, elastic_net_alpha
+
+from MonoKernel import omp, reg_tree, rfe_, mutual_info
+from MonoKernel import sort_df, importance_map
+
+pred, true, r2, mse, mat= rfe_(rdata, tot, 3, 100, 999)
+
+importance_map(mat, 100, 1.25, 'Blues_r')
+
+sort_df(pred,true).head()
+
+pred, true, r2, mse, mat= lassoCD(rdata, tot, 1e-3, 3e-1, 20, 999)
+sort_df(pred,true).head()
