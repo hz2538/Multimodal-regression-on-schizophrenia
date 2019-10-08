@@ -36,7 +36,7 @@ def importance_map(mat, fig_on_row, tspace, cm):
         # plt.colorbar()
     plt.show()
     
-def lassoCD(X, y, ll, ul, step, weight, state):
+def lassoCD(X, y, ll, ul, step, state):
     kf = KFold(n_splits=10,shuffle=True,random_state=state)
     feature=[]
     pred=[]
@@ -72,8 +72,6 @@ def lassoCD(X, y, ll, ul, step, weight, state):
             mse_single.append(mean_squared_error(y_test, y_test_pred))
             pbar.update(1)
         r2.append(r2_single)
-        if (r2_single >0):
-            break
         r2_single = np.array(r2_single)
         f = np.where(r2_single==max(r2_single))[0][0]
         mse.append(mse_single)
@@ -112,7 +110,7 @@ def lassoCD(X, y, ll, ul, step, weight, state):
     print('number of selected features:',feature.shape[0])
     return df1, df2, df3
 
-def LassoLars(X, y, ll, ul, step, weight, state):
+def lassoCD(X, y, ll, ul, step, state):
     kf = KFold(n_splits=10,shuffle=True,random_state=state)
     feature=[]
     pred=[]
@@ -186,7 +184,7 @@ def LassoLars(X, y, ll, ul, step, weight, state):
     print('number of selected features:',feature.shape[0])
     return df1, df2, df3
 
-def lassoLARSIC(data, label, cri, weight, state):
+def lassoLARSIC(data, label, cri, state):
     kf = KFold(n_splits=10, shuffle=True, random_state=state)
     X = data
     y = label
@@ -216,12 +214,12 @@ def lassoLARSIC(data, label, cri, weight, state):
     true = np.array(true)
     r2=np.array(r2)
     mse = np.array(mse)
-    print('mean r2_score=',np.average(r2,weights=weight))
+    print('mean r2_score=',np.average(r2,weights=[18,18,18,18,18,18,17,17,17,17]))
     feature = feature[np.where(r2==max(r2))][0]
     print('number of selected features:',len(feature))
     return pred, true, r2, mse, feature
 
-def elastic_net(data, label, ll1, ul1, step1, ll2, ul2, step2, weight, state):
+def elastic_net(data, label, ll1, ul1, step1, ll2, ul2, step2, state):
     kf = KFold(n_splits=10,shuffle=True,random_state=state)
     X = data
     y = label
@@ -273,7 +271,7 @@ def elastic_net(data, label, ll1, ul1, step1, ll2, ul2, step2, weight, state):
         ilist.append(g[k,0])
         jlist.append(g[k,1])
     r2=np.array(r2)
-    r2_mean=np.average(r2,axis=1,weights=weight)
+    r2_mean=np.average(r2,axis=1,weights=[18,18,18,18,18,18,17,17,17,17])
     pbar.close()
     plt.figure()
     plt.scatter(g[:,0],g[:,1],c=r2_mean,marker='.',cmap='Blues_r')
@@ -294,7 +292,7 @@ def elastic_net(data, label, ll1, ul1, step1, ll2, ul2, step2, weight, state):
     print('number of selected features:',len(feature))
     return pred, true, r2, mse, feature, a, r
 
-def elastic_net_ratio(data, label, ll, ul, step, al, weight, state):
+def elastic_net_ratio(data, label, ll, ul, step, al, state):
     kf = KFold(n_splits=10,shuffle=True,random_state=state)
     X = data
     y = label
@@ -337,7 +335,7 @@ def elastic_net_ratio(data, label, ll, ul, step, al, weight, state):
         feature.append(feature_single)
         ilist.append(i)
     r2=np.array(r2)
-    r2_mean=np.average(r2,axis=1,weights=weight)
+    r2_mean=np.average(r2,axis=1,weights=[18,18,18,18,18,18,17,17,17,17])
     pbar.close()
     plt.figure()
     plt.plot(np.linspace(ll,ul,step),r2_mean)
@@ -355,7 +353,7 @@ def elastic_net_ratio(data, label, ll, ul, step, al, weight, state):
     print('number of selected features:',len(feature))
     return pred, true, r2, mse, feature, a
 
-def elastic_net_alpha(data, label, ll, ul, step, ratio, weight, state):
+def elastic_net_alpha(data, label, ll, ul, step, ratio, state):
     kf = KFold(n_splits=10,shuffle=True,random_state=state)
     X = data
     y = label
@@ -398,7 +396,7 @@ def elastic_net_alpha(data, label, ll, ul, step, ratio, weight, state):
         feature.append(feature_single)
         ilist.append(i)
     r2=np.array(r2)
-    r2_mean=np.average(r2,axis=1,weights=weight)
+    r2_mean=np.average(r2,axis=1,weights=[18,18,18,18,18,18,17,17,17,17])
     pbar.close()
     plt.figure()
     plt.plot(np.linspace(ll,ul,step),r2_mean)
@@ -416,7 +414,7 @@ def elastic_net_alpha(data, label, ll, ul, step, ratio, weight, state):
     print('number of selected features:',len(feature))
     return pred, true, r2, mse, feature, a
 
-def omp(data, label, ll, ul, step, weight, state):
+def omp(data, label, ll, ul, step, state):
     kf = KFold(n_splits=10,shuffle=True,random_state=state)
     X = data
     y = label
@@ -459,7 +457,7 @@ def omp(data, label, ll, ul, step, weight, state):
         feature.append(feature_single)
         ilist.append(i)
     r2=np.array(r2)
-    r2_mean=np.average(r2,axis=1,weights=weight)
+    r2_mean=np.average(r2,axis=1,weights=[18,18,18,18,18,18,17,17,17,17])
     pbar.close()
     plt.figure()
     plt.plot(np.linspace(ll,ul,step),r2_mean)
@@ -477,7 +475,7 @@ def omp(data, label, ll, ul, step, weight, state):
     print('number of selected features:',len(feature))
     return pred, true, r2, mse, feature
 
-def reg_tree(data, label, lower_n_features, upper_n_features, weight, state):
+def reg_tree(data, label, lower_n_features, upper_n_features, state):
     X = data
     y = label
     kf = KFold(n_splits=10,shuffle=True,random_state=state)
@@ -529,11 +527,11 @@ def reg_tree(data, label, lower_n_features, upper_n_features, weight, state):
     r2 = r2[:,a[0]]
     feature=np.argsort(np.mean(mat,axis=0))[:ilist]
     pbar.close()
-    print('mean r2_score=',np.average(r2,weights=weight),
+    print('mean r2_score=',np.average(r2,weights=[18,18,18,18,18,18,17,17,17,17]),
           ', number of features=',ilist)
     return pred, true, r2, mse, mat, feature
 
-def rfe_(data, label, lower_n_features, upper_n_features, weight, state):
+def rfe_(data, label, lower_n_features, upper_n_features, state):
     X = data
     y = label
     kf = KFold(n_splits=10,shuffle=True,random_state=state)
@@ -584,11 +582,11 @@ def rfe_(data, label, lower_n_features, upper_n_features, weight, state):
     r2 = r2[:,a[0]]
     feature=np.argsort(np.mean(mat,axis=0))[:ilist]
     pbar.close()
-    print('mean r2_score=',np.average(r2,weights=weight),
+    print('mean r2_score=',np.average(r2,weights=[18,18,18,18,18,18,17,17,17,17]),
           ', number of features=',ilist)
     return pred, true, r2, mse, mat, feature
 
-def mutual_info(data, label, ll, ul, step, weight, state):
+def mutual_info(data, label, ll, ul, step, state):
     kf = KFold(n_splits=10,shuffle=True,random_state=state)
     X = data
     y = label
@@ -631,7 +629,7 @@ def mutual_info(data, label, ll, ul, step, weight, state):
         feature.append(feature_single)
         ilist.append(i)
     r2=np.array(r2)
-    r2_mean=np.average(r2,axis=1,weights=weight)
+    r2_mean=np.average(r2,axis=1,weights=[18,18,18,18,18,18,17,17,17,17])
     pbar.close()
     plt.figure()
     plt.plot(np.linspace(ll,ul,step),r2_mean)
