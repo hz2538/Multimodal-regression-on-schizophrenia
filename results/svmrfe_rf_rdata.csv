@@ -1,0 +1,2 @@
+max_r2,num_features,params
+0.14260132850665064,355,"[50, 'mse', 15, 1, 2, 'sqrt']"

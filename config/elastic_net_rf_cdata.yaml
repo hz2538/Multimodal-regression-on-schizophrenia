@@ -1,0 +1,24 @@
+# this is the configuration file for cdata (LassoCD and randomforest)
+
+# result_csv_file: the path of csv file for grid search results 
+save_result_path: ./results/elastic_net_rf_cdata_nonorm.csv
+
+# These are for lassoCD
+ll1: -8
+ul1: -5
+step1: 4
+ll2: 0.80
+ul2: 0.89
+step2: 10
+random_state: 73
+score_min: 10
+score_max: 52
+
+# These are for randomforest regressor
+rf_params_set: {
+           n_estimators: [100], 
+           criterion: ["mse"],
+           max_depth: [3], 
+           min_samples_leaf: [1], 
+           min_samples_split: [2], 
+           max_features: ["sqrt"]}

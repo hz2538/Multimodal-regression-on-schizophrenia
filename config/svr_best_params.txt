@@ -1,0 +1,28 @@
+cdata_minmax: kernel='rbf', gamma=0.45, epsilon=0.1
+best r2_score= -0.06651505429754812 , corresponding alpha= 0.01215
+corr = 0.066292
+
+cdata_maxabs: kernel='rbf', gamma=1.0, epsilon=0.1
+best r2_score= -0.0725866829559437 , corresponding alpha= 0.00688
+corr = 0.026674
+
+pdata_maxabs: kernel='rbf', gamma=0.5, epsilon=0.01
+best r2_score= 0.02071388291829377 , corresponding alpha= 0.0085
+corr = 0.334466
+
+pdata_maxabs: kernel='rbf', gamma=0.5, epsilon=0.1
+best r2_score= -0.009613941198800735 , corresponding alpha= 0.00866
+corr = 0.302198
+
+rdata_maxabs: kernel='rbf', gamma=1.0, epsilon=0.001
+best r2_score= 0.160153282445001, number of selected features: 128
+corr = 0.516124
+
+rdata_maxabs: kernel='rbf', gamma=0.35, epsilon=0.1
+best r2_score= 0.04253779375361956, number of selected features: 255
+corr = 0.474089
+
+xdata_maxabs: kernel='rbf', gamma=1.0, epsilon=0.1
+best r2_score= 0.10995567734378571, number of selected features: 65
+corr = 0.398336
+

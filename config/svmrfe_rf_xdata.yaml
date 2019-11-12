@@ -1,0 +1,20 @@
+# this is the configuration file for cdata (LassoCD and randomforest)
+
+# result_csv_file: the path of csv file for grid search results 
+save_result_path: ./results/svmrfe_rf_xdata.csv
+
+# These are for lassoCD
+ll: 1
+ul: 70
+random_state: 73
+score_min: 10
+score_max: 52
+
+# These are for randomforest regressor
+rf_params_set: {
+           n_estimators: [50,100,150,200], 
+           criterion: ["mse"],
+           max_depth: [2, 3, 5, 15], 
+           min_samples_leaf: [1,2,3], 
+           min_samples_split: [2], 
+           max_features: ["sqrt","auto"]}

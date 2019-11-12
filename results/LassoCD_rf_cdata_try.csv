@@ -1,0 +1,2 @@
+max_r2,best_alpha,num_features,params
+-0.021484343492967746,1e-08,3348,"[200, 'mse', 2, 1, 2, 'sqrt']"
