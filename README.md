@@ -14,3 +14,6 @@ This is an ongoing project on multimodal-regression for schizophrenia diagnosis.
 * Lasso
 * Elastic net
 * SVM-RFE
+
+## Current progress
+* Please visit experiment1101.ipynb, randomforest.ipynb
