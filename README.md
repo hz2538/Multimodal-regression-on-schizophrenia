@@ -16,4 +16,4 @@ This is an ongoing project on multimodal-regression for schizophrenia diagnosis.
 * SVM-RFE
 
 ## Current progress
-* Please visit experiment1101.ipynb, randomforest.ipynb
+* Please visit experiment1101.ipynb in branch "jywang", randomforest.ipynb in branch "hxzhuang"
