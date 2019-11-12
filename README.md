@@ -12,4 +12,5 @@ This is an ongoing project on multimodal-regression for schizophrenia diagnosis.
 ## Preprocessing
 ## Feature Selection
 * Lasso
-* SearchLight
+* Elastic net
+* SVM-RFE
